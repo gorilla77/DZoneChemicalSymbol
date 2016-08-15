@@ -7,21 +7,21 @@ import java.util.Set;
 public class ChemicalSymbolService {
 
     public Boolean isValidSymbol(String elementName, String symbol) {
-        // Validate input
+        // Validate & prepare input
         validateElementName(elementName);
-
-        // Valid symbol?
         elementName = elementName.trim().toLowerCase();
         symbol = symbol.trim().toLowerCase();
+
+        // Valid symbol?
         return elementName.matches("\\w*" + symbol.charAt(0) + "\\w*" + symbol.charAt(1) + "\\w*");
     }
 
     public String getFirstValidSymbol(String elementName) {
-        // Validate input
+        // Validate & prepare input
         validateElementName(elementName);
+        elementName = elementName.trim().toLowerCase();
 
         // Find first char
-        elementName = elementName.trim().toLowerCase();
         char firstChar = elementName.charAt(0);
         int firstCharPos = 0;
         for (int i = 1; i < elementName.length()-1; i++) {
@@ -46,8 +46,9 @@ public class ChemicalSymbolService {
     }
 
     public Set<String> getDistinctSymbols(String elementName) {
-        // Validate input
+        // Validate & prepare input
         validateElementName(elementName);
+        elementName = elementName.trim().toLowerCase();
 
         // Find symbols
         Set<String> symbols = new HashSet<>();
@@ -71,4 +72,5 @@ public class ChemicalSymbolService {
         if (elementName.trim().length() < 2)
             throw new RuntimeException("Element name must be at least 2 characters");
     }
+
 }
