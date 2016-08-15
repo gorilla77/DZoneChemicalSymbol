@@ -25,8 +25,8 @@ public class ChemicalSymbolServiceTest {
 
     @Test
     public void getFirstValidSymbol() {
-        assertEquals(service.getFirstValidSymbol("Gozerium"), "Ei");
-        assertEquals(service.getFirstValidSymbol("Slimyrine"), "Ie");
+        assertEquals(service.getFirstInOrderSymbol("Gozerium"), "Ei");
+        assertEquals(service.getFirstInOrderSymbol("Slimyrine"), "Ie");
     }
 
     @Test

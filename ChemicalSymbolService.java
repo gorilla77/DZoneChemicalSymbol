@@ -6,6 +6,9 @@ import java.util.Set;
  */
 public class ChemicalSymbolService {
 
+    /**
+     * Is the given symbol valid for the given element name?
+     */
     public Boolean isValidSymbol(String elementName, String symbol) {
         // Validate & prepare input
         validateElementName(elementName);
@@ -16,7 +19,10 @@ public class ChemicalSymbolService {
         return elementName.matches("\\w*" + symbol.charAt(0) + "\\w*" + symbol.charAt(1) + "\\w*");
     }
 
-    public String getFirstValidSymbol(String elementName) {
+    /**
+     * Given an element name, find the valid symbol for that name that's first in alphabetical order.
+     */
+    public String getFirstInOrderSymbol(String elementName) {
         // Validate & prepare input
         validateElementName(elementName);
         elementName = elementName.trim().toLowerCase();
@@ -45,6 +51,9 @@ public class ChemicalSymbolService {
         return new String(new char[]{Character.toUpperCase(firstChar), secondChar});
     }
 
+    /**
+     * Return a set of distinct symbols for the given element name.
+     */
     public Set<String> getDistinctSymbols(String elementName) {
         // Validate & prepare input
         validateElementName(elementName);
@@ -66,6 +75,7 @@ public class ChemicalSymbolService {
     }
 
 
+    // Validate element name
     private void validateElementName(String elementName) {
         if (elementName == null || elementName.trim().length() == 0)
             throw new RuntimeException("Element name is required");
